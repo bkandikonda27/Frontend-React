@@ -4,9 +4,8 @@ import StockRecommendations from './StockRecommendations';
 import SearchBar from './SearchBar';
 import './Parent.css';
 
-function CorrectRender(props, oldtick) {
+function CorrectRender(props) {
     const ticker = props.props;
-    console.log("props", props)
     const previousTicker = props.oldtick;
     if (ticker.length > 0 && previousTicker !== ticker) {
         return <div>
@@ -52,7 +51,7 @@ export class Parent extends Component {
             <div className='Parent'>
                 <header>
                     <SearchBar parentCallback = {this.callbackFunction}/>
-                    <CorrectRender props={this.state.stockSymbol} oldtick={this.state.previousTicker}/>
+                    <CorrectRender props={this.state.stockSymbol}/>
                 </header>
             </div>
         )

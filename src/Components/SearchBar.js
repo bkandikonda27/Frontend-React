@@ -21,7 +21,6 @@ export class SearchBar extends Component {
     fetchTickers(stockSymbol) {
         const pointer = this;
         let arr = [];
-        console.log(stockSymbol, "1");
         let url = `https://ticker-2e1ica8b9.now.sh/keyword/${stockSymbol}`;
 
         fetch(url) 
@@ -45,12 +44,9 @@ export class SearchBar extends Component {
     textChange = (e) => {
         const value = e.target.value;
         let arr = [];
-        console.log(value, "10")
         if (value.length > 0) {
             const regex = new RegExp(`^${value}`, 'i');
-            console.log(value, "value")
-            console.log(regex, "regex");
-            this.fetchTickers(value);
+            this.fetchTickersDeb(value);
             arr = this.state.tickerList.sort().filter(tick => regex.test(tick));
         }
         this.setState({
@@ -58,6 +54,7 @@ export class SearchBar extends Component {
             search: value
         });
     }
+
     
     tickerChosen(value) {
         let value1 = value.split(`,`);

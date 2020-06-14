@@ -32,7 +32,6 @@ export class StockRecommendations extends Component {
         if (this.state.stockSymbol !== this.props.stockSymbol) {
             this.fetchStock();
         }
-        console.log(1)
     }
 
     fetchStock() {
@@ -88,51 +87,57 @@ export class StockRecommendations extends Component {
     }
     
     render() {
-
-        return (
-            <div>
-                <Plot 
-                    data={[
-                        {
-                            x: this.state.period,
-                            y: this.state.strongSell,
-                            name: 'Strong Sell',
-                            type: 'bar',
-                            marker: { color: 'black'},
-                        },
-                        {
-                            x: this.state.period,
-                            y: this.state.sell,
-                            name: 'Sell',
-                            type: 'bar',
-                            marker: { color: 'red'},
-                        },
-                        {
-                            x: this.state.period,
-                            y: this.state.hold,
-                            name: 'Hold',
-                            type: 'bar',
-                            marker: { color: 'rgb(254, 196, 0)'},
-                        },
-                        {
-                            x: this.state.period,
-                            y: this.state.buy,
-                            name: 'Buy',
-                            type: 'bar',
-                            marker: { color: 'rgb(114, 196, 0)'},
-                        },
-                        {
-                            x: this.state.period,
-                            y: this.state.strongBuy,
-                            name: 'Strong Buy',
-                            type: 'bar',
-                            marker: { color: 'green'},
-                        }
-                    ]}
-                    layout = { {width: 440, height: 720, barmode: 'stack', title: 'Analyst Recommendations'}}
-                />
-            </div>
-        )
+        if (this.state.strongSell < 1) {
+            return <h1>
+                Sorry, the Analyst Recommendations aren't available for this ticker. Please search for another one!
+            </h1>
+        } else {
+            return (
+                <div>
+                    <Plot 
+                        data={[
+                            {
+                                x: this.state.period,
+                                y: this.state.strongSell,
+                                name: 'Strong Sell',
+                                type: 'bar',
+                                marker: { color: 'black'},
+                            },
+                            {
+                                x: this.state.period,
+                                y: this.state.sell,
+                                name: 'Sell',
+                                type: 'bar',
+                                marker: { color: 'red'},
+                            },
+                            {
+                                x: this.state.period,
+                                y: this.state.hold,
+                                name: 'Hold',
+                                type: 'bar',
+                                marker: { color: 'rgb(254, 196, 0)'},
+                            },
+                            {
+                                x: this.state.period,
+                                y: this.state.buy,
+                                name: 'Buy',
+                                type: 'bar',
+                                marker: { color: 'rgb(114, 196, 0)'},
+                            },
+                            {
+                                x: this.state.period,
+                                y: this.state.strongBuy,
+                                name: 'Strong Buy',
+                                type: 'bar',
+                                marker: { color: 'green'},
+                            }
+                        ]}
+                        layout = { {width: 440, height: 720, barmode: 'stack', title: 'Analyst Recommendations'}}
+                    />
+                </div>
+            )
+        }
+       
     }
 }
 

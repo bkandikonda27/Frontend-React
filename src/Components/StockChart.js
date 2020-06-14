@@ -6,6 +6,7 @@ import { debounce } from 'lodash';
 // Make an API request to pull the ending StockPrice over the last 100 days
 // Then Chart the graph using Plotly.JS
 
+
 class StockChart extends Component {
     constructor(props) {
         super(props);
@@ -60,15 +61,23 @@ class StockChart extends Component {
                         stockYValues: StockYValuesFunc,
                         stockSymbol: symbol
                     });
+                    return 1;
                 }
             )
             .catch((error) => {
                 console.log(error);
+                return 0;
             })
     }
 
 
     render() {
+
+        if (this.state.stockYValues < 1) {
+            return <h1>
+                Sorry, looks like the Stock Chart isn't avaialable for this ticker. Please search for another one!
+            </h1>
+        }
 
         return (
             <div>
@@ -79,38 +88,17 @@ class StockChart extends Component {
                         y: this.state.stockYValues,
                         type: 'scatter',
                         mode: 'lines+markers',
-                        marker: {color: 'red'},
+                        marker: {color: 'red'}
                     },
                     ]}
                     layout={ {width: 720, height: 440, title: 'Closing Price over the last 100 days'} }
                 />
             </div>
           )
-
-        // if(this.state.stockXValues > 0 && this.state.stockYValues > 0) {
-        //     return (
-        //         <div>
-        //             <Plot
-        //                 data={[
-        //                 {
-        //                     x: this.state.stockXValues,
-        //                     y: this.state.stockYValues,
-        //                     type: 'scatter',
-        //                     mode: 'lines+markers',
-        //                     marker: {color: 'red'},
-        //                 },
-        //                 ]}
-        //                 layout={ {width: 720, height: 440, title: 'Closing Price over the last 100 days'} }
-        //             />
-        //         </div>
-        //       )
-        // } else {
-        //     return <h1>
-        //     Sorry, looks like the data for the ticker you searched isn't available. Please search for another ticker!
-        // </h1>
-        // }
   }
 }
+
+
 
 
 export default StockChart;
