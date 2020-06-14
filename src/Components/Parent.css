@@ -1,0 +1,9 @@
+.Parent {
+    text-align: center;
+    width: 100%;
+    /* box-shadow: 4px 4px 1px 1px rgba(0, 0, 255, .2); */
+}
+
+.Parent h1 {
+    color: black;
+}
