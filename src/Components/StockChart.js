@@ -75,7 +75,7 @@ class StockChart extends Component {
 
         if (this.state.stockYValues < 1) {
             return <h1>
-                Sorry, looks like the Stock Chart isn't avaialable for this ticker. Please search for another one!
+                Sorry, looks like Stock Pricing information isn't avaialable for this ticker. Please search for another one!
             </h1>
         }
 
