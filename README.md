@@ -9,3 +9,12 @@ When the relevant company is selected within the drop down menu of the Search Ba
 The user needs a Finnhub API Key to pull the stock recommendations, but the existing AlphaVantage API key for getting Stock Price data works.
 
 ------------------------------------------------------------------------------------------------------------------------------
+
+
+To run Project, download the file and go to file directory in terminal/command prompt.
+--  Type "npm start".
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+[Project Demo on Youtube](https://www.youtube.com/watch?v=t4xTG7_Oio4&feature=youtu.be)
